@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"includeCCode/shared/gohello"
+	"github.com/andresbott/exploring-CGO/shared/gohello"
 )
 
 func main() {

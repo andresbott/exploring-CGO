@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"includeCCode/static/gohello"
+	"github.com/andresbott/exploring-CGO/static/gohello"
 )
 
 func main() {
