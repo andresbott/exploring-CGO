@@ -1,6 +1,8 @@
 package main
 
+import "C"
 import (
+	"github.com/andresbott/exploring-CGO/mpv/mpv"
 	"log"
 	"runtime"
 
@@ -30,4 +32,20 @@ func main() {
 	if err := gl.Init(); err != nil {
 		panic(err)
 	}
+
+	mpvHandle, err := mpv.Create()
+	if err != nil {
+		panic(err)
+	}
+
+	err = mpv.Init(mpvHandle)
+	if err != nil {
+		panic(err)
+	}
+
+	err = mpv.RenderContextCreate(mpvHandle)
+	if err != nil {
+		panic(err)
+	}
+
 }
