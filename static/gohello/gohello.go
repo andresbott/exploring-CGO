@@ -36,6 +36,26 @@ func SendString(in string) string {
 	return parsed
 }
 
+func SampleStringArray() []string {
+	cStringArray := C.sample_string_array()
+	count := 0
+	for cStringArray != nil && *cStringArray != nil {
+		count++
+		cStringArray = (**C.char)(unsafe.Pointer(uintptr(unsafe.Pointer(cStringArray)) + unsafe.Sizeof(*cStringArray)))
+	}
+
+	goStrings := make([]string, count)
+
+	for i := 0; i < count; i++ {
+		goStrings[i] = C.GoString((*C.char)(unsafe.Pointer(uintptr(unsafe.Pointer(cStrings)) + uintptr(i)*unsafe.Sizeof(*cStrings))))
+	}
+
+	return goStrings
+
+	return nil
+
+}
+
 // TypeConversions converts different go types to C types and back
 func TypeConversions() []string {
 	out := []string{}

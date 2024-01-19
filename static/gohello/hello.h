@@ -4,6 +4,8 @@
 const char* getHello();
 char* return_string(const char *in);
 
+char** sample_string_array();
+
 typedef struct sampleStruct {
     char name[20];
     int number;
